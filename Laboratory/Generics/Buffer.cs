@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 
 namespace Generics
 {
@@ -21,6 +22,17 @@ namespace Generics
             return _queue.Dequeue();
         }
 
-        
+        public IEnumerator<T> GetEnumerator()
+        {
+            foreach(var item in _queue)
+            {
+                yield return item;
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
     }
 }
