@@ -54,7 +54,7 @@ namespace Generics
         }
 
         /*
-         * Sorted Generecis and IComparer
+         * Sorted Generics and IComparer
          */ 
         static void case_3()
         {
