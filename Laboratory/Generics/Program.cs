@@ -22,20 +22,22 @@ namespace Generics
         }
 
         /*
-         * Comparing
+         * IEQualityComparer
         */ 
         static void case_2()
         {
             var finantialTypes = new SortedDictionary<string, HashSet<Instrument>>();
 
-            finantialTypes.Add("Bonds", new HashSet<Instrument>());
+            // use the Oject InstrumentComparer to Compare the instruments
+
+            finantialTypes.Add("Bonds", new HashSet<Instrument>(new InstrumentComparer()));
             finantialTypes["Bonds"].Add(new Instrument { Name = "BO12" });
             finantialTypes["Bonds"].Add(new Instrument { Name = "BO52" });
             finantialTypes["Bonds"].Add(new Instrument { Name = "BO92" });
 
-            finantialTypes.Add("Shares", new HashSet<Instrument>());
+            finantialTypes.Add("Shares", new HashSet<Instrument>(new InstrumentComparer()));
             finantialTypes["Shares"].Add(new Instrument { Name = "S012" });
-            finantialTypes["Shares"].Add(new Instrument { Name = "S052" });
+            finantialTypes["Shares"].Add(new Instrument { Name = "S012" });
             finantialTypes["Shares"].Add(new Instrument { Name = "S092" });
 
             
@@ -51,10 +53,42 @@ namespace Generics
             
         }
 
+        /*
+         * Sorted Generecis and IComparer
+         */ 
+        static void case_3()
+        {
+            var finantialTypes = new SortedDictionary<string, SortedSet<Instrument>>();
+
+            // use the Oject InstrumentComparer to Compare the instruments
+
+            finantialTypes.Add("Bonds", new SortedSet<Instrument>(new InstrumentComparer()));
+            finantialTypes["Bonds"].Add(new Instrument { Name = "BO12" });
+            finantialTypes["Bonds"].Add(new Instrument { Name = "BO52" });
+            finantialTypes["Bonds"].Add(new Instrument { Name = "BO92" });
+
+            finantialTypes.Add("Shares", new SortedSet<Instrument>(new InstrumentComparer()));
+            finantialTypes["Shares"].Add(new Instrument { Name = "S012" });
+            finantialTypes["Shares"].Add(new Instrument { Name = "S012" });
+            finantialTypes["Shares"].Add(new Instrument { Name = "S092" });
+
+
+
+            foreach (var financialType in finantialTypes)
+            {
+                Console.WriteLine(financialType.Key);
+                foreach (var instrument in financialType.Value)
+                {
+                    Console.WriteLine("\t" + instrument.Name);
+                }
+            }
+        }
+
         static void Main(string[] args)
         {
            // case_1();
             case_2();
+            case_3();
             Console.ReadKey();
 
         }
