@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Generics
 {
@@ -26,19 +25,18 @@ namespace Generics
         */ 
         static void case_2()
         {
-            var finantialTypes = new SortedDictionary<string, HashSet<Instrument>>();
+            var finantialTypes = new InstrumentCollection();
 
             // use the Oject InstrumentComparer to Compare the instruments
 
-            finantialTypes.Add("Bonds", new HashSet<Instrument>(new InstrumentComparer()));
-            finantialTypes["Bonds"].Add(new Instrument { Name = "BO12" });
-            finantialTypes["Bonds"].Add(new Instrument { Name = "BO52" });
-            finantialTypes["Bonds"].Add(new Instrument { Name = "BO92" });
+            finantialTypes.Add("Bonds", new Instrument { Name = "BO12" })
+                          .Add("Bonds", new Instrument { Name = "BO12" })
+                          .Add("Bonds", new Instrument { Name = "BO52" })
+                          .Add("Bonds", new Instrument { Name = "BO92" });
 
-            finantialTypes.Add("Shares", new HashSet<Instrument>(new InstrumentComparer()));
-            finantialTypes["Shares"].Add(new Instrument { Name = "S012" });
-            finantialTypes["Shares"].Add(new Instrument { Name = "S012" });
-            finantialTypes["Shares"].Add(new Instrument { Name = "S092" });
+            finantialTypes.Add("Shares", new Instrument { Name = "S012" })
+                          .Add("Shares", new Instrument { Name = "S012" })
+                          .Add("Shares", new Instrument { Name = "S092" });
 
             
 
@@ -58,19 +56,19 @@ namespace Generics
          */ 
         static void case_3()
         {
-            var finantialTypes = new SortedDictionary<string, SortedSet<Instrument>>();
+            var finantialTypes = new InstrumentCollectionSorted();
 
             // use the Oject InstrumentComparer to Compare the instruments
 
-            finantialTypes.Add("Bonds", new SortedSet<Instrument>(new InstrumentComparer()));
-            finantialTypes["Bonds"].Add(new Instrument { Name = "BO12" });
-            finantialTypes["Bonds"].Add(new Instrument { Name = "BO52" });
-            finantialTypes["Bonds"].Add(new Instrument { Name = "BO92" });
+            finantialTypes.Add("Bonds", new Instrument { Name = "BO12" })
+                          .Add("Bonds", new Instrument { Name = "BO12" })
+                          .Add("Bonds", new Instrument { Name = "BO52" })
+                          .Add("Bonds", new Instrument { Name = "BO92" });
 
-            finantialTypes.Add("Shares", new SortedSet<Instrument>(new InstrumentComparer()));
-            finantialTypes["Shares"].Add(new Instrument { Name = "S012" });
-            finantialTypes["Shares"].Add(new Instrument { Name = "S012" });
-            finantialTypes["Shares"].Add(new Instrument { Name = "S092" });
+            finantialTypes.Add("Shares", new Instrument { Name = "S012" })
+                           .Add("Shares", new Instrument { Name = "S012" })
+                           .Add("Shares", new Instrument { Name = "S012" })
+                           .Add("Shares", new Instrument { Name = "S092" });
 
 
 
