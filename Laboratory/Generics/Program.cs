@@ -137,6 +137,28 @@ namespace Generics
             }
         }
 
+        /*
+         * Events and Generics 
+        */
+
+        static void case_7()
+        {
+            var buffer = new CircularBuffer<double>(capacity:3);
+            buffer.ItemDiscarded += Buffer_ItemDiscarded;
+            buffer.Write(3.5);
+            buffer.Write(2.4);
+            buffer.Write(5.4);
+            buffer.Write(8);
+
+        }
+
+        private static void Buffer_ItemDiscarded(object sender, 
+            DiscardedEventArgs<double> e)
+        {
+            Console.WriteLine("Buffer discarding item {0}, new item {1}",
+                e.ItemDiscarded, e.NewItem);
+        }
+
         static void Main(string[] args)
         {
             // case_1();
@@ -144,7 +166,8 @@ namespace Generics
             // case_3();
             // case_4();
             // Case_5();
-            case_6();
+            //case_6();
+            case_7();
             Console.ReadKey();
 
         }
