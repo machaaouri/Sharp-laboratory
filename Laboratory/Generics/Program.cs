@@ -108,12 +108,26 @@ namespace Generics
 
         }
 
+        /*
+         * Func Action and predicate
+         */ 
+        static void Case_5()
+        {
+            Action < bool > display = d => Console.WriteLine(d);
+            Func<double, double> square = d => d * d;
+            Func<double, double, double> Add = (x, y) => x + y;
+            Predicate<double> lessThanOne = d => d <= 1;
+
+            display(lessThanOne(square(Add(2.3, 5))));
+        }
+
         static void Main(string[] args)
         {
            // case_1();
             case_2();
             case_3();
             case_4();
+            Case_5();
             Console.ReadKey();
 
         }
