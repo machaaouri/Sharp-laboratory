@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace Generics
@@ -7,11 +6,13 @@ namespace Generics
     public static class BufferExtensions
     {
 
-        public static void Dump<T>( this IBuffer<T> buffer)
+        public delegate void OutPut<T>(T data);
+
+        public static void Dump<T>( this IBuffer<T> buffer,OutPut<T> output)
         {
             foreach(var item in buffer)
             {
-                Console.WriteLine(item);
+                output(item);
             }
         }
         public static IEnumerable<Toutput> AsEnumerableOf<T,Toutput>

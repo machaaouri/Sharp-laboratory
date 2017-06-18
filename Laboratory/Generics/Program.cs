@@ -83,15 +83,21 @@ namespace Generics
         }
 
         /*
-         * Extensions Methods 
+         * Extensions Methods and delegates
         */
+
+        static void ConsoleOut(double data)
+        {
+            Console.WriteLine(data);
+        }
         static void case_4()
         {
             var buffer = new Buffer<double>();
             buffer.Write(3.5);
             buffer.Write(2.4);
 
-            buffer.Dump();
+
+            buffer.Dump(ConsoleOut);
 
             var ToInt = buffer.AsEnumerableOf<double, int>();
 
