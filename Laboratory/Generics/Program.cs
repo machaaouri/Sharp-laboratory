@@ -121,13 +121,30 @@ namespace Generics
             display(lessThanOne(square(Add(2.3, 5))));
         }
 
+        static void case_6()
+        {
+            var buffer = new Buffer<double>();
+            buffer.Write(3.5);
+            buffer.Write(2.4);
+
+            Converter<double, DateTime> converter = d => new DateTime(2017, 1, 1).AddDays(d);
+
+            var toDate = buffer.Map(converter);
+
+            foreach (var item in toDate)
+            {
+                Console.WriteLine(item);
+            }
+        }
+
         static void Main(string[] args)
         {
-           // case_1();
-            case_2();
-            case_3();
-            case_4();
-            Case_5();
+            // case_1();
+            // case_2();
+            // case_3();
+            // case_4();
+            // Case_5();
+            case_6();
             Console.ReadKey();
 
         }
