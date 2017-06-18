@@ -8,6 +8,9 @@ namespace Generics
 
         void Write(T value);
         T Read();
+
+        // Generic Method
+        IEnumerable<Toutput> AsEnumerableOf<Toutput>();
         
     }
 }
