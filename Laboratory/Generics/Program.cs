@@ -82,11 +82,32 @@ namespace Generics
             }
         }
 
+        /*
+         * Extensions Methods 
+        */
+        static void case_4()
+        {
+            var buffer = new Buffer<double>();
+            buffer.Write(3.5);
+            buffer.Write(2.4);
+
+            buffer.Dump();
+
+            var ToInt = buffer.AsEnumerableOf<double, int>();
+
+            foreach(var item in ToInt)
+            {
+                Console.WriteLine(item);
+            }
+
+        }
+
         static void Main(string[] args)
         {
            // case_1();
             case_2();
             case_3();
+            case_4();
             Console.ReadKey();
 
         }
