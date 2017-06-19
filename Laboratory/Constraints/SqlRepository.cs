@@ -7,7 +7,11 @@ using System.Threading.Tasks;
 
 namespace Constraints
 {
-    public class SqlRepository<T> : IRepository<T> where T: class  /* DataSet only works with an Object reference */
+    /* DataSet only works with an Object reference
+     * if you want to use value types (int , double...) 
+     * use struct but the compiler will not be happy.. becuase of DBset 
+    */
+    public class SqlRepository<T> : IRepository<T> where T : class,IEntity  
     {
         /*
          * IoC
@@ -24,17 +28,21 @@ namespace Constraints
 
         public void Add(T newEntity)
         {
-            _set.Add(newEntity);
+            // before adding an Entity to database we want it to pass some validation rules
+            if (newEntity.IsValid())
+            {
+                _set.Add(newEntity);
+            }
         }
 
         public void Delete(T entity)
         {
-            throw new NotImplementedException();
+            _set.Remove(entity);
         }
 
         public T FindById(int id)
         {
-            throw new NotImplementedException();
+            return _set.Find(id);
         }
 
         public IQueryable<T> FindAll()

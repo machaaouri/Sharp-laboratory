@@ -28,7 +28,14 @@ namespace Constraints
             {
                 AddEmployees(employeeRepository);
                 CountEmployees(employeeRepository);
+                QueryById(employeeRepository);
             }
+        }
+
+        private static void QueryById(IRepository<Employee> employeeRepository)
+        {
+            Employee emp = employeeRepository.FindById(1);
+            Console.WriteLine(emp.Name);
         }
 
         private static void CountEmployees(IRepository<Employee> employeeRepository)
