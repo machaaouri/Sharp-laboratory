@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Constraints
 {
-    public interface IRepository<T> : IReadOnlyRepository<T>, IDisposable
+    public interface IRepository<T> : IReadOnlyRepository<T>, IWriteOnlyRepository<T>
     {
-        void Add(T newEntity);
-        void Delete(T entity);
-        int Commit();
+        /*
+         * IRepository remains invariant ,it will pick up the IDisposable from one of the inherited interfaces
+        */
     }
 }

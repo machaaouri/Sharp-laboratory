@@ -57,6 +57,7 @@
     <Compile Include="IEntity.cs" />
     <Compile Include="IReadOnlyRepository.cs" />
     <Compile Include="IRepository.cs" />
+    <Compile Include="IWriteOnlyRepository.cs" />
     <Compile Include="Manager.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />

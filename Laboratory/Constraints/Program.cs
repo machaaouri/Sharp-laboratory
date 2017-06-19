@@ -27,10 +27,17 @@ namespace Constraints
                 new SqlRepository<Employee>(new EmployeeDbContex()))
             {
                 AddEmployees(employeeRepository);
+                AddManagers(employeeRepository); // Contravariance
                 CountEmployees(employeeRepository);
                 QueryById(employeeRepository);
-                DumpPeople(employeeRepository);
+                DumpPeople(employeeRepository); // Covariance 
             }
+        }
+
+        private static void AddManagers(IWriteOnlyRepository<Manager> employeeRepository)
+        {
+            employeeRepository.Add(new Manager { Name = "MCH" });
+            employeeRepository.Commit();
         }
 
         private static void DumpPeople(IReadOnlyRepository<Person> employeeRepository)
