@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Constraints
 {
-    class Person
+    public class Person
     {
         public String Name { get; set; }
     }

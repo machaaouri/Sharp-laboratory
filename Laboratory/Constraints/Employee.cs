@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Constraints
 {
-    class Employee : Person
+    public class Employee : Person
     {
         public int Id { get; set; }
         public virtual void DoWork()

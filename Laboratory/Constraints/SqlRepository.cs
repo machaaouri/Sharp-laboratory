@@ -45,10 +45,11 @@ namespace Constraints
         public int Commit()
         {
             return _ctx.SaveChanges(); // Returns the number of records that were affected
-        
+        }
 
         public void Dispose()
         {
             _ctx.Dispose();
+        }
     }
 }

@@ -9,7 +9,7 @@ namespace Constraints
     public interface IRepository<T> : IDisposable
     {
         void Add(T newEntity);
-        void Delete(Ta entity);
+        void Delete(T entity);
         T FindById(int id);
         /*
          * I need to do some manipulations with the Dataset, that's why i'm using IQueryable 

@@ -18,8 +18,36 @@ namespace Constraints
             */
             Database.SetInitializer(new DropCreateDatabaseAlways<EmployeeDbContex>());
         }
+
+        static void SeedDb()
+        {
+            Init();
+
+            using(IRepository<Employee>  employeeRepository =
+                new SqlRepository<Employee>(new EmployeeDbContex()))
+            {
+                AddEmployees(employeeRepository);
+                CountEmployees(employeeRepository);
+            }
+        }
+
+        private static void CountEmployees(IRepository<Employee> employeeRepository)
+        {
+            Console.WriteLine(employeeRepository.FindAll().Count());
+        }
+
+        private static void AddEmployees(IRepository<Employee> employeeRepository)
+        {
+            employeeRepository.Add(new Employee { Name = "Houssame" });
+            employeeRepository.Add(new Employee { Name = "Machaaouri" });
+            employeeRepository.Add(new Employee { Name = "Ben" });
+            employeeRepository.Commit();
+        }
+
         static void Main(string[] args)
         {
+            SeedDb();
+            Console.ReadKey();
         }
     }
 }
