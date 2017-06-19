@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="DataAccess.cs" />
     <Compile Include="Employee.cs" />
+    <Compile Include="IEntity.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="Manager.cs" />
     <Compile Include="Person.cs" />
