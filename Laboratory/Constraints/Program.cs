@@ -29,6 +29,17 @@ namespace Constraints
                 AddEmployees(employeeRepository);
                 CountEmployees(employeeRepository);
                 QueryById(employeeRepository);
+                DumpPeople(employeeRepository);
+            }
+        }
+
+        private static void DumpPeople(IReadOnlyRepository<Person> employeeRepository)
+        {
+            var employees = employeeRepository.FindAll();
+
+            foreach(var employee in employees)
+            {
+                Console.WriteLine(employee.Name);
             }
         }
 
