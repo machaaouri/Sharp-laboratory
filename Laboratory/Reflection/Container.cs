@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Reflection
 {
@@ -32,12 +33,27 @@ namespace Reflection
             if(_map.ContainsKey(sourceType))
             {
                 var destinationType = _map[sourceType];
-                return Activator.CreateInstance(destinationType);
+                return CreateInstance(destinationType);
             }
             else
             {
                 throw new InvalidOperationException("Could not resolve " + sourceType.FullName);
             }
+        }
+
+        private object CreateInstance(Type destinationType)
+        {
+            //using reflection , return a list of constructors
+            //Order them by number of params and get the first constructor's params list
+
+            var parameters = destinationType.GetConstructors()
+                                      .OrderByDescending(c => c.GetParameters().Count())
+                                      .First()
+                                      .GetParameters()
+                                      .Select(p => Resolve(p.ParameterType))
+                                      .ToArray();
+
+            return Activator.CreateInstance(destinationType,parameters);
         }
 
         public class Containerbuilder

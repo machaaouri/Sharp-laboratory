@@ -11,12 +11,12 @@
     }
 
     // Wrap data access code
-    public interface Irepository<T>
+    public interface IRepository<T>
     {
 
     }
 
-    public class SqlRepository<T> : Irepository<T>
+    public class SqlRepository<T> : IRepository<T>
     {
         public SqlRepository(Ilogger logger)
         {
@@ -26,7 +26,7 @@
 
     public class InvoiceSerice
     {
-        public InvoiceSerice(Irepository<Person> repository,Ilogger logger)
+        public InvoiceSerice(IRepository<Person> repository,Ilogger logger)
         {
 
         }
