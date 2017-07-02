@@ -19,6 +19,14 @@ namespace Reflection
                 Console.WriteLine("[{0}]",item.Name);
             }
 
+
+            // call a method defined in Person class by reflection
+            var person = new Person();
+            var personType = typeof(Person);
+            var methodInfo = personType.GetMethod("Speak");
+            methodInfo = methodInfo.MakeGenericMethod(typeof(Person));
+            methodInfo.Invoke(person, null);
+
             Console.ReadKey();
                 
         }
