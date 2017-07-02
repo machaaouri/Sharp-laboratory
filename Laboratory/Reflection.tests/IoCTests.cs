@@ -32,6 +32,19 @@ namespace Reflection.tests
 
             Assert.AreEqual(typeof(SqlRepository<Person>), repo.GetType());
 
+        }
+
+        [TestMethod]
+        public void Can_Resolve_concrete_types()
+        {
+            var ioc = new Container();
+            ioc.For<Ilogger>().Use<SqlServerLogger>();
+            ioc.For(typeof(IRepository<>)).Use(typeof(SqlRepository<>));
+
+            // resolve something that implements the ILogger interface
+            var service = ioc.Resolve<InvoiceSerice>();
+
+            Assert.IsNotNull(service);
 
         }
     }
