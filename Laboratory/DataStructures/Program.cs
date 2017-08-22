@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataStructures
 {
@@ -36,23 +32,10 @@ namespace DataStructures
 
         }
 
-        static void Stack_Ex_min()
-        {
-            StackWithMin<int> stack = new StackWithMin<int>();
-            stack.push(2);
-            stack.push(11);
-            stack.push(12);
-            stack.push(9);
-            stack.push(1);
-            Console.WriteLine(stack.pop());
-            stack.getMin();
-
-        }
         static void Main(string[] args)
         {
             //Node_Ex();
-            //Stack_Ex();
-            Stack_Ex_min();
+            Stack_Ex();
             Console.ReadKey();
         }
     }

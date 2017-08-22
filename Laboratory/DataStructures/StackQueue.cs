@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataStructures
 {
@@ -44,48 +40,7 @@ namespace DataStructures
         }
     }
 
-    class StackWithMin<T> : Stack<T>
-    {
-        Stack<T> min;
-
-        public void push(T item)
-        {
-            if(Compare(item) > 0)
-            {
-                min.push(item);
-            }
-            base.push(item);
-        }
-
-        public int Compare(object obj)
-        {
-            if (min == null)
-            {
-                T val = (T)obj;
-                min.push(val);
-                return 0;
-            }
-            var comparer = Comparer<T>.Default;
-            T value = (T)obj;
-            return comparer.Compare(min.peek(), value);
-        }
-
-        public T pop()
-        {
-            T value = base.pop();
-            if(Compare(value) == 0)
-            {
-                min.pop();
-            }
-            return value;
-        }
-
-        public T getMin()
-        {
-            Console.WriteLine(min.peek());
-            return min.peek();
-        }
-    }
+   
 
 
     class Queue<T>
