@@ -8,16 +8,20 @@ namespace DataStructures
 {
     class Node<T>
     {
-        Node<T> next = null;
-        T data;
+        public Node<T> Next {get; set;}
+        public T Data { get; set; }
 
-        public Node(T d) { data = d; }
+        public Node(T d) {
+
+            Next = null;
+            Data = d;
+        }
 
         public override bool Equals(object obj)
         {
             var comparer = Comparer<T>.Default;
             T value = (T)obj;
-            return comparer.Compare(data, value) == 0;
+            return comparer.Compare(Data, value) == 0;
         }
 
         public void addNodeToTail(T d)
@@ -33,7 +37,7 @@ namespace DataStructures
         {
             Node<T> n = head;
 
-            if(n.data.Equals(d))
+            if(n.Data.Equals(d))
             {
                 return head.next; // removed head
             }
@@ -57,10 +61,10 @@ namespace DataStructures
 
             while(node.next != null)
             {
-                if (set.Contains(node.data))  prev.next = node.next;
+                if (set.Contains(node.Data))  prev.next = node.next;
                 else
                 {
-                    set.Add(node.data);
+                    set.Add(node.Data);
                     prev = node;
                 }
 
@@ -73,7 +77,7 @@ namespace DataStructures
             Node<T> n = this;
             while(n != null)
             {
-                Console.WriteLine(n.data);
+                Console.WriteLine(n.Data);
                 n = n.next;
             }
         }
