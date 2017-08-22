@@ -39,10 +39,12 @@ namespace DataStructures
         static void Stack_Ex_min()
         {
             StackWithMin<int> stack = new StackWithMin<int>();
-            stack.push(10);
+            stack.push(2);
             stack.push(11);
             stack.push(12);
             stack.push(9);
+            stack.push(1);
+            Console.WriteLine(stack.pop());
             stack.getMin();
 
         }

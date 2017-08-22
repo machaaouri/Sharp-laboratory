@@ -28,6 +28,12 @@ namespace DataStructures
             top = node;
         }
 
+        public T peek()
+        {
+            T value = top.Data;
+            return value;
+        }
+
         public void Display()
         {
             while (top != null)
@@ -40,30 +46,44 @@ namespace DataStructures
 
     class StackWithMin<T> : Stack<T>
     {
-        T min;
+        Stack<T> min;
 
         public void push(T item)
         {
-            if (base.top == null) min = item;
-
             if(Compare(item) > 0)
             {
-                min = item;
+                min.push(item);
             }
             base.push(item);
         }
 
         public int Compare(object obj)
         {
+            if (min == null)
+            {
+                T val = (T)obj;
+                min.push(val);
+                return 0;
+            }
             var comparer = Comparer<T>.Default;
             T value = (T)obj;
-            return comparer.Compare(min, value);
+            return comparer.Compare(min.peek(), value);
+        }
+
+        public T pop()
+        {
+            T value = base.pop();
+            if(Compare(value) == 0)
+            {
+                min.pop();
+            }
+            return value;
         }
 
         public T getMin()
         {
-            Console.WriteLine(min);
-            return min;
+            Console.WriteLine(min.peek());
+            return min.peek();
         }
     }
 
