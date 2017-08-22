@@ -2,7 +2,7 @@
 
 namespace DataStructures
 {
-    class Stack<T>
+    class MyStack<T>
     {
         internal Node<T> top;
 
