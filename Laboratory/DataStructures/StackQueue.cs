@@ -60,4 +60,39 @@ namespace DataStructures
             return default(T);
         }
     }
+
+    class ThreeStacksArray
+    {
+        static int arraySize = 300;
+        int[] array =  new int[arraySize * 3];
+        int[] trackTopItems = { 0, 0, 0 };
+
+        public void push(int stackNum,int item)
+        {
+            int index = arraySize * stackNum + trackTopItems[stackNum] + 1 ;
+            trackTopItems[stackNum]++;
+            array[index] = item;
+        }
+
+        public int pop(int stackNum)
+        {
+            int index = arraySize * stackNum + trackTopItems[stackNum];
+            trackTopItems[stackNum]--;
+            int item = array[index];
+            array[index] = 0;
+            return item;
+        }
+
+        public int peek(int stackNum)
+        {
+            int index = arraySize * stackNum + trackTopItems[stackNum];
+            return array[index];
+        }
+
+        public bool isEmpty(int stackNum)
+        {
+            return trackTopItems[stackNum] == arraySize * stackNum;
+        }
+
+    }
 }
