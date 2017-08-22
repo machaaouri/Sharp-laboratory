@@ -50,6 +50,24 @@ namespace DataStructures
             return head;
         }
 
+        public void deleteDups(Node<T> node)
+        {
+            HashSet<T> set = new HashSet<T>();
+            Node<T> prev = null;
+
+            while(node.next != null)
+            {
+                if (set.Contains(node.data))  prev.next = node.next;
+                else
+                {
+                    set.Add(node.data);
+                    prev = node;
+                }
+
+                node = node.next;
+            }
+        }
+
         public void Display()
         {
             Node<T> n = this;
