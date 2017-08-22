@@ -29,8 +29,8 @@ namespace DataStructures
             Node<T> end =  new Node<T>(d);
             Node<T> n = this;
 
-            while(n.next != null) n = n.next;
-            n.next = end;
+            while (n.Next != null) n = n.Next;
+            n.Next = end;
         }
 
         public Node<T> deteleNode(Node<T> head, T d)
@@ -39,17 +39,17 @@ namespace DataStructures
 
             if(n.Data.Equals(d))
             {
-                return head.next; // removed head
+                return head.Next; // removed head
             }
 
-            while(n.next != null)
+            while (n.Next != null)
             {
-                if(n.next.Equals(d))
+                if (n.Next.Equals(d))
                 {
-                    n.next = n.next.next;
+                    n.Next = n.Next.Next;
                     break;
                 }
-                n = n.next;
+                n = n.Next;
             }
             return head;
         }
@@ -59,16 +59,16 @@ namespace DataStructures
             HashSet<T> set = new HashSet<T>();
             Node<T> prev = null;
 
-            while(node.next != null)
+            while (node.Next != null)
             {
-                if (set.Contains(node.Data))  prev.next = node.next;
+                if (set.Contains(node.Data)) prev.Next = node.Next;
                 else
                 {
                     set.Add(node.Data);
                     prev = node;
                 }
 
-                node = node.next;
+                node = node.Next;
             }
         }
 
@@ -78,7 +78,7 @@ namespace DataStructures
             while(n != null)
             {
                 Console.WriteLine(n.Data);
-                n = n.next;
+                n = n.Next;
             }
         }
     }

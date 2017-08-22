@@ -8,7 +8,7 @@ namespace DataStructures
 {
     class Stack<T>
     {
-        Node<T> top;
+        internal Node<T> top;
 
         public T pop()
         {
@@ -27,7 +27,46 @@ namespace DataStructures
             node.Next = top;
             top = node;
         }
+
+        public void Display()
+        {
+            while (top != null)
+            {
+                Console.WriteLine(top.Data);
+                top = top.Next;
+            }
+        }
     }
+
+    class StackWithMin<T> : Stack<T>
+    {
+        T min;
+
+        public void push(T item)
+        {
+            if (base.top == null) min = item;
+
+            if(Compare(item) > 0)
+            {
+                min = item;
+            }
+            base.push(item);
+        }
+
+        public int Compare(object obj)
+        {
+            var comparer = Comparer<T>.Default;
+            T value = (T)obj;
+            return comparer.Compare(min, value);
+        }
+
+        public T getMin()
+        {
+            Console.WriteLine(min);
+            return min;
+        }
+    }
+
 
     class Queue<T>
     {
