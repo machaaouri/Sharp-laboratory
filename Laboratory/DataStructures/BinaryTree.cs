@@ -117,6 +117,19 @@
             else if (root.Right == null) return root;
             else return findMax(root.Right);
         }
+
+        //Given a sorted (increasing order) array, write an algorithm to create a binary tree with minimal height
+
+        public TNode CreateBST(int[] A,int start,int end)
+        {
+            if (end < start) return null;
+
+            int mid = (start + end) / 2;
+            TNode node = new TNode(A[mid]);
+            node.Right = CreateBST(A, mid + 1,end);
+            node.Left = CreateBST(A, start, mid - 1);
+            return node;
+        }
     }
 
 }

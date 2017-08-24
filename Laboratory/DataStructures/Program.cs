@@ -75,10 +75,15 @@ namespace DataStructures
             tree.add(9); tree.add(1);
             tree.add(6); tree.add(3);
 
-            TNode min = tree.findMin(tree.root);
-            Console.WriteLine(min.Data);
             TNode max = tree.findMax(tree.root);
             Console.WriteLine(max.Data);
+            tree.Delete(ref tree.root, 52);
+            max = tree.findMax(tree.root);
+            Console.WriteLine(max.Data);
+
+            int[] A = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            tree.root = tree.CreateBST(A, 0, A.Length - 1);
+
 
         }
 
