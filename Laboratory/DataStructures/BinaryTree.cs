@@ -53,6 +53,20 @@
             }
 
         }
+
+        public TNode findMin(TNode root)
+        {
+            if (root == null) return null;
+            else if (root.Left == null) return root;
+            else return findMin(root.Left);
+        }
+
+        public TNode findMax(TNode root)
+        {
+            if (root == null) return null;
+            else if (root.Right == null) return root;
+            else return findMax(root.Right);
+        }
     }
 
 }

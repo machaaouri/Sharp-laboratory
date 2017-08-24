@@ -70,11 +70,15 @@ namespace DataStructures
         static void BalancedTree()
         {
             Tree tree = new Tree();
-            tree.add(1);
-            tree.add(2);
-            tree.add(3);
-            tree.add(5);
+            tree.add(5); tree.add(52);
+            tree.add(2); tree.add(15);
+            tree.add(9); tree.add(1);
+            tree.add(6); tree.add(3);
 
+            TNode min = tree.findMin(tree.root);
+            Console.WriteLine(min.Data);
+            TNode max = tree.findMax(tree.root);
+            Console.WriteLine(max.Data);
 
         }
 
