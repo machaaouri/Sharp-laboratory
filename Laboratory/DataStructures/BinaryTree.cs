@@ -54,6 +54,56 @@
 
         }
 
+        public void Delete(ref TNode tree , int target)
+        {
+            if (root == null) return;
+
+            else if (target < tree.Data) Delete(ref tree.Left, target);
+            else if (target > tree.Data) Delete(ref tree.Right, target);
+            else // found node to be deleted
+            {
+                if(tree.Left != null && tree.Right != null) // 2 children
+                {
+                    TNode min = findMin(tree.Right);
+                    tree.Data = min.Data;
+                    Delete(ref tree.Right, tree.Data);
+
+                   
+                }
+                else // one or zero child
+                {
+                    if (tree.Left == null)
+                    {
+                        if (tree.Parent == null) this.root = tree.Right; // the target match the root which has no left child (root is deleted)
+                        else
+                        {
+                            if (tree.Right != null)
+                            {
+                                tree.Right.Parent = tree.Parent;
+                            }
+
+                            if (tree == tree.Parent.Left)
+                                tree.Parent.Left = tree.Right;
+                            else tree.Parent.Right = tree.Right;
+                        }
+                    }
+                    else if(tree.Right == null)
+                    {
+                        if (tree.Parent == null) this.root = tree.Left;
+                        else
+                        {
+                            tree.Left.Parent = tree.Parent;
+                            if (tree == tree.Left.Parent)
+                                tree.Parent.Left = tree.Left;
+                            else
+                                tree.Parent.Right = tree.Left;
+                        }
+                    }
+                    
+                }
+            }
+        }
+
         public TNode findMin(TNode root)
         {
             if (root == null) return null;
