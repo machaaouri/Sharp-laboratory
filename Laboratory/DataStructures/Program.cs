@@ -67,11 +67,23 @@ namespace DataStructures
         }
         
 
+        static void BalancedTree()
+        {
+            Tree tree = new Tree();
+            tree.add(1);
+            tree.add(2);
+            tree.add(3);
+            tree.add(5);
+
+
+        }
+
         static void Main(string[] args)
         {
             //Node_Ex();
             //Stack_Ex();
-            Sort_Ex();
+            //Sort_Ex();
+            BalancedTree();
             Console.ReadKey();
         }
     }
