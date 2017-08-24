@@ -130,6 +130,27 @@
             node.Left = CreateBST(A, start, mid - 1);
             return node;
         }
+
+        //Check if T2 is a subtree of T1
+
+        public bool isSubtree(TNode T1,TNode T2)
+        {
+            if (T1 == null) return true; //Big tree empty and T2 hasn't been fond
+            if(T1.Data == T2.Data )
+            {
+                if (matchTree(T1, T2)) return true;
+            }
+            return (isSubtree(T1.Left, T2) || isSubtree(T1.Right, T2));
+        }
+
+        private bool matchTree(TNode t1, TNode t2)
+        {
+            if (t1 == null && t2 == null) return true;
+            if (t1 == null || t2 == null) return false;
+
+            if (t1.Data != t2.Data) return false;
+            return matchTree(t1.Left, t2.Left) && matchTree(t1.Right, t2.Right);
+        }
     }
 
 }
