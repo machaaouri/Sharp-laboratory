@@ -12,17 +12,23 @@ namespace Recursion
 
         static void Permutations()
         {
-            List<string> perms = Recursion.getPerms("ABCDEFGHIJKL");
+            List<string> perms = Recursion.getPerms("ABC");
             Console.WriteLine("{0} permutations",perms.Count);
             foreach(var word in perms)
             {
                 Console.WriteLine(word);
             }
         }
+
+        static void printParen()
+        {
+            Recursion.printPar(3);
+        }
         static void Main(string[] args)
         {
             //Console.WriteLine(Fibo());
-            Permutations();
+            //Permutations();
+            printParen();
             Console.ReadKey();
 
         }
