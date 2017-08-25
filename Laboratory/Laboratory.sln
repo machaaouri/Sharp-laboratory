@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generics", "Generics\Generics.csproj", "{4570F5CA-0922-48C7-9C40-184FB34FBC80}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Constraints", "Constraints\Constraints.csproj", "{BC361C15-6224-42FF-A96C-9F29E5B6B199}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructures", "DataStructures\DataStructures.csproj", "{FCCD1684-F266-4F67-A174-FD57782EF9F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recursion", "Recursion\Recursion.csproj", "{0BCCD52A-93F1-479B-B979-B4D5FBF46C80}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{FCCD1684-F266-4F67-A174-FD57782EF9F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FCCD1684-F266-4F67-A174-FD57782EF9F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FCCD1684-F266-4F67-A174-FD57782EF9F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BCCD52A-93F1-479B-B979-B4D5FBF46C80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BCCD52A-93F1-479B-B979-B4D5FBF46C80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BCCD52A-93F1-479B-B979-B4D5FBF46C80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BCCD52A-93F1-479B-B979-B4D5FBF46C80}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
