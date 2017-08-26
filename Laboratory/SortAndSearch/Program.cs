@@ -1,4 +1,6 @@
-﻿namespace SortAndSearch
+﻿using System;
+
+namespace SortAndSearch
 {
     class Program
     {
@@ -8,9 +10,21 @@
             int[] B = { 32, 34, 36, 41 };
             SortAndSearch.merge(A, 5, B);
         }
+
+        static void SortStrings()
+        {
+            string[] words = { "ZEF","ABC", "ABD", "ABE", "ACB", "BCD" };
+            SortAndSearch.SortAnagrams(words);
+            foreach(var w in words )
+            {
+                Console.WriteLine(w);
+            }
+        }
         static void Main(string[] args)
         {
-            Merge();
+            //Merge();
+            SortStrings();
+            Console.ReadKey();
         }
     }
 }

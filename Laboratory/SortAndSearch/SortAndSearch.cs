@@ -1,4 +1,7 @@
-﻿namespace SortAndSearch
+﻿using System;
+using System.Collections.Generic;
+
+namespace SortAndSearch
 {
     public class SortAndSearch
     {
@@ -25,6 +28,26 @@
             {
                 A[k--] = B[j--];
             }
+        }
+
+        //sort an array of strings so that all the anagrams are next to each other.
+        public class MyComparator : IComparer<String>
+        {
+            public String SortString(String s)
+            {
+                char[] c = s.ToCharArray();
+                Array.Sort(c);
+                return new string(c);
+            }
+            public int Compare(string x, string y)
+            {
+                return SortString(x).CompareTo(SortString(y));
+            }
+        }
+
+        public static void SortAnagrams(string[] s)
+        {
+            Array.Sort(s, new MyComparator());
         }
 
     }
