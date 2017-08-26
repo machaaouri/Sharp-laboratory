@@ -20,10 +20,44 @@ namespace SortAndSearch
                 Console.WriteLine(w);
             }
         }
+
+        static void getLastKLines(int K)
+        {
+            String[] files = { "ABC", "CDE", "EFG", "GHI", "IJK", "KLM", "MNO", "OPQ", "QRS", "STX", "XBN", "VCX" };
+            string[] last = new string[K];
+
+            int l = 0,index;
+            foreach(var line in files)
+            {
+                index = l % K;
+                last[index] = line;
+                l++;
+            }
+
+            int start, count;
+            if(l < K)
+            {
+                start = 0;
+                count = l;
+            }
+            else
+            {
+                start = l % K;
+                count = K;
+            }
+
+            for(int i = 0; i < count;i++)
+            {
+                index = (start + i) % K;
+                Console.WriteLine(last[index]);
+            }
+
+        }
         static void Main(string[] args)
         {
             //Merge();
-            SortStrings();
+            //SortStrings();
+            getLastKLines(5);
             Console.ReadKey();
         }
     }
