@@ -50,5 +50,35 @@ namespace SortAndSearch
             Array.Sort(s, new MyComparator());
         }
 
+        //Given a matrix in which each row and each column is sorted, write a method to find an element in it
+        /*
+         * |1 |5 |7 |9 |
+         * |2 |8 |10|11|
+         * |4 |9 |12|15|
+         * |10|17|20|25|
+         *
+        */ 
+
+        static bool findElem(int[][] A, int elem,int rowLen ,int colLen)
+        {
+            int row = 0;
+            int col = colLen - 1;
+
+            while(row < rowLen || col >= 0)
+            {
+                if(A[row][col] == elem)
+                {
+                    return true;
+                }
+                else
+                {
+                    if (A[row][col] > elem) col--;
+                    else row++;
+                }
+            }
+
+            return false;
+        }
+
     }
 }
