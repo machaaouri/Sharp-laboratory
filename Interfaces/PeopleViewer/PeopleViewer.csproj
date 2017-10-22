@@ -102,6 +102,10 @@
       <Project>{22d242eb-8113-49e3-8cc9-03a41e3b185e}</Project>
       <Name>PersonRepository.CSV</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PersonRepository.SQL\PersonRepository.SQL.csproj">
+      <Project>{003702d8-e922-4539-80d4-15aab22ff29d}</Project>
+      <Name>PersonRepository.SQL</Name>
+    </ProjectReference>
     <ProjectReference Include="D:\Dev\GitHub\Sharp-laboratory\Interfaces\PersonRepository.Interface\PersonRepository.Interface.csproj">
       <Project>{39e0968b-b410-45d3-ab49-b2c4b451ead6}</Project>
       <Name>PersonRepository.Interface</Name>
