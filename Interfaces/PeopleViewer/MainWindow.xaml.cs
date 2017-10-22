@@ -1,7 +1,4 @@
-﻿using PersonRepository.CSV;
-using PersonRepository.Interface;
-using PersonRepository.Service;
-using PersonRepository.SQL;
+﻿using PersonRepository.Interface;
 using System.Windows;
 
 namespace PeopleViewer
@@ -15,36 +12,18 @@ namespace PeopleViewer
 
         private void ServiceFetchButton_Click(object sender, RoutedEventArgs e)
         {
-            ClearListBox();
-            IPersonRepository repository =  new ServiceRepository();
-            var peopel = repository.GetPeople();
-            foreach (var person in peopel)
-                PersonListBox.Items.Add(person);
-
-            ShowRepositoryType(repository);
+            FetchData("Service");
         }
 
         private void CSVFetchButton_Click(object sender, RoutedEventArgs e)
         {
-            ClearListBox();
-            IPersonRepository repository = new CSVRepository();
-            var peopel = repository.GetPeople();
-            foreach (var person in peopel)
-                PersonListBox.Items.Add(person);
-
-            ShowRepositoryType(repository);
+            FetchData("CSV");
 
         }
 
         private void SQLFetchButton_Click(object sender, RoutedEventArgs e)
         {
-            ClearListBox();
-            IPersonRepository repository = new SQLRepository();
-            var peopel = repository.GetPeople();
-            foreach (var person in peopel)
-                PersonListBox.Items.Add(person);
-
-            ShowRepositoryType(repository);
+            FetchData("SQL");
         }
 
         private void ClearButton_Click(object sender, RoutedEventArgs e)
@@ -55,6 +34,17 @@ namespace PeopleViewer
         private void ClearListBox()
         {
             PersonListBox.Items.Clear();
+        }
+
+        private void FetchData(string repositoryType)
+        {
+            ClearListBox();
+            IPersonRepository repository = RepositoryFactory.GetRepository(repositoryType);
+            var peopel = repository.GetPeople();
+            foreach (var person in peopel)
+                PersonListBox.Items.Add(person);
+
+            ShowRepositoryType(repository);
         }
 
         private void ShowRepositoryType(IPersonRepository repository)
