@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-
 namespace ACM.BL
 {
     public class CustomerRepository
@@ -19,11 +18,34 @@ namespace ACM.BL
             //}
 
             //Query syntax
-            var query = from c in customerList
-                        where c.CustomerId == customerId
-                        select c;
+            //var query = from c in customerList
+            //            where c.CustomerId == customerId
+            //            select c;
 
-            foundCustomer = query.First();
+            //foundCustomer = query.First();
+
+
+
+
+            // First throws an exception if no value match the criteria ( use first or default instead)
+            // Default value for most reference types is NULL
+
+            foundCustomer = customerList.FirstOrDefault(c =>
+                                c.CustomerId == customerId);
+
+
+            //Lambda expression in multiple lines
+            //foundCustomer = customerList.FirstOrDefault(c =>
+            //                        {
+            //                            Debug.WriteLine(c.LastName);
+            //                            return c.CustomerId == customerId;
+            //                        });
+
+            //foundCustomer = customerList.Where(c =>
+            //                    c.CustomerId == customerId)
+            //                    .Skip(1)
+            //                    .FirstOrDefault();
+                                   
 
 
             return foundCustomer;

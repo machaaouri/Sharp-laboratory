@@ -19,5 +19,17 @@ namespace ACM.BL.Test
             Assert.AreEqual("Baggins", result.LastName);
             Assert.AreEqual("Bilbo", result.FirstName);
         }
+
+        [TestMethod]
+        public void FindTestNotFound()
+        {
+            CustomerRepository repository = new CustomerRepository();
+
+            var customerList = repository.Retrieve();
+
+            var result = repository.Find(customerList, 50);
+
+            Assert.IsNull(result);
+        }
     }
 }
