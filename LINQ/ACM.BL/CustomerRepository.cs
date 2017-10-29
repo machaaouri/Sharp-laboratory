@@ -18,6 +18,7 @@ namespace ACM.BL
             //    }
             //}
 
+            //Query syntax
             var query = from c in customerList
                         where c.CustomerId == customerId
                         select c;
