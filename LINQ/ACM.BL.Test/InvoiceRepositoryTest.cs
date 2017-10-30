@@ -62,5 +62,47 @@ namespace ACM.BL.Test
 
             // NOT REALLY A TEST
         }
+
+        [TestMethod]
+        public void CalculateMeanTest()
+        {
+            // Arrange
+            InvoiceRepository repository = new InvoiceRepository();
+            var invoiceList = repository.Retrieve();
+
+            // Act
+            var actual = repository.CalculateMean(invoiceList);
+
+            // Assert
+            Assert.AreEqual(6.875M, actual);
+        }
+
+        [TestMethod]
+        public void CalculateMedianTest()
+        {
+            // Arrange
+            InvoiceRepository repository = new InvoiceRepository();
+            var invoiceList = repository.Retrieve();
+
+            // Act
+            var actual = repository.CalculateMedian(invoiceList);
+
+            // Assert
+            Assert.AreEqual(10M, actual);
+        }
+
+        [TestMethod]
+        public void CalculateModeTest()
+        {
+            // Arrange
+            InvoiceRepository repository = new InvoiceRepository();
+            var invoiceList = repository.Retrieve();
+
+            // Act
+            var actual = repository.CalculateMode(invoiceList);
+
+            // Assert
+            Assert.AreEqual(10M, actual);
+        }
     }
 }
