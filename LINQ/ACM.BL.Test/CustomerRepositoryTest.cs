@@ -6,6 +6,8 @@ namespace ACM.BL.Test
     [TestClass]
     public class CustomerRepositoryTest
     {
+        public TestContext TestContext { get; set; }
+
         [TestMethod]
         public void FindExistingCustomer()
         {
@@ -31,6 +33,49 @@ namespace ACM.BL.Test
             var result = repository.Find(customerList, 50);
 
             Assert.IsNull(result);
+        }
+
+
+        [TestMethod]
+        public void GetNamesTest()
+        {
+            CustomerRepository repository = new CustomerRepository();
+            var customerList = repository.Retrieve();
+
+            var query = repository.GetNames(customerList);
+
+            foreach (var item in query)
+            {
+                TestContext.WriteLine(item);
+            }
+
+            Assert.IsNotNull(query);
+        }
+
+        [TestMethod]
+        public void GetNamesandEmailTest()
+        {
+            CustomerRepository repository = new CustomerRepository();
+            var customerList = repository.Retrieve();
+
+            var query = repository.GetNamesAndEmail(customerList);
+
+            // this is not a test , i only want to see the result
+        }
+
+        [TestMethod]
+        public void GetNamesandTypelTest()
+        {
+            CustomerRepository repository = new CustomerRepository();
+            var customerList = repository.Retrieve();
+
+            CustomerTypeReposiory typeRepository = new CustomerTypeReposiory();
+            var customerTypeList = typeRepository.Retrieve();
+
+
+            var query = repository.GetNamesAndType(customerList,customerTypeList);
+
+            // this is not a test , i only want to see the result
         }
 
         [TestMethod]

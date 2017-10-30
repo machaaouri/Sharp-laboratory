@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 namespace ACM.BL
 {
@@ -50,6 +51,49 @@ namespace ACM.BL
 
             return foundCustomer;
 
+        }
+
+
+        public IEnumerable<string> GetNames(List<Customer> customerList)
+        {
+            var query = customerList.Select(c => c.LastName + ", " + c.FirstName);
+
+            return query;
+        }
+
+        public dynamic GetNamesAndEmail(List<Customer> customerList)
+        {
+            var query = customerList.Select(c => new
+                            {Name = c.LastName + ", " + c.FirstName,
+                             c.EmailAddress
+                            });
+            foreach(var item in query)
+            {
+                Console.WriteLine(item.Name + " :" + item.EmailAddress);
+            }
+
+            return query;
+        }
+
+
+        public dynamic GetNamesAndType(List<Customer> customerList,
+                                           List<CustomerType> customerTypeList)
+        {
+            var query = customerList.Join(customerTypeList,
+                            outer => outer.CustomerTypeId,
+                            inner => inner.CustomerTypeId,
+                            (outer, inner) => new
+                            {
+                                Name = outer.LastName + ", " + outer.FirstName,
+                                CustomerTypeName = inner.TypeName
+                            });
+
+            foreach (var item in query)
+            {
+                Console.WriteLine(item.Name + ": " + item.CustomerTypeName);
+            }
+
+            return query;
         }
 
         public List<Customer> Retrieve()
