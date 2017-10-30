@@ -107,6 +107,30 @@ namespace ACM.BL
         }
 
 
+        public IEnumerable<KeyValuePair<string,decimal>> GetInvoiceTotalByCustomerType(List<Customer> customerList,
+                                                    List<CustomerType> customerTypeList)
+        {
+
+            var customerTypequery = customerList.Join(customerTypeList,
+                                    c=> c.CustomerTypeId,
+                                    ct=> ct.CustomerTypeId,
+                                    (c,ct)=> new
+                                    {
+                                        CustomerInstance = c,
+                                        customerTypeName = ct.TypeName
+                                    });
+
+            var query = customerTypequery.GroupBy(c => c.customerTypeName,
+                                             c => c.CustomerInstance.InvoiceList.Sum(inv => inv.TotalAmount),
+                                             (groupKey, invTotal) => new KeyValuePair<string,decimal>(groupKey,invTotal.Sum()));
+            foreach (var item in query)
+            {
+                Console.WriteLine(item.Key + ": " + item.Value);
+            }
+
+            return query;
+        }
+
 
         public List<Customer> Retrieve()
         {
@@ -126,21 +150,21 @@ namespace ACM.BL
                             LastName = "Baggins",
                             EmailAddress = "bb@hob.me",
                             CustomerTypeId=null,
-                          InvoiceList=invoiceRepository.Retrieve(2)},
+                            InvoiceList=invoiceRepository.Retrieve(2)},
                     new Customer()
                           { CustomerId = 3,
                             FirstName="Samwise",
                             LastName = "Gamgee",
                             EmailAddress = "sg@hob.me",
-                            CustomerTypeId=1,
-                          InvoiceList=invoiceRepository.Retrieve(3)},
+                            CustomerTypeId=4,
+                            InvoiceList=invoiceRepository.Retrieve(3)},
                     new Customer()
                           { CustomerId = 4,
                             FirstName="Rosie",
                             LastName = "Cotton",
                             EmailAddress = "rc@hob.me",
-                            CustomerTypeId=2,
-                          InvoiceList = invoiceRepository.Retrieve(4)}};
+                            CustomerTypeId = 2,
+                            InvoiceList = invoiceRepository.Retrieve(4)}};
             return custList;
         }
 

@@ -136,5 +136,18 @@ namespace ACM.BL.Test
             Assert.IsNotNull(result);
             Assert.AreEqual(null, result.Last().CustomerTypeId);
         }
+
+
+        [TestMethod]
+        public void GetInvoiceTotalBycustomerTypeTest()
+        {
+            CustomerRepository repository = new CustomerRepository();
+            var customerList = repository.Retrieve();
+
+            CustomerTypeReposiory typeRepository = new CustomerTypeReposiory();
+            var customerTypeList = typeRepository.Retrieve();
+
+            var result = repository.GetInvoiceTotalByCustomerType(customerList, customerTypeList);
+        }
     }
 }
