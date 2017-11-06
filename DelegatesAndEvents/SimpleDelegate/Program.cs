@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 namespace SimpleDelegate
 {
 
-        //OneWay delegate
-        public delegate void MyDelegate(int hours, WorkType workType);
+
 
         /*
          * Behinf the scenes the compiler generates a class Mydelegate that inherits from MutliCastDelegates
@@ -20,8 +19,10 @@ namespace SimpleDelegate
             {
                 MyDelegate del1 = new MyDelegate(WorkPerformed1);
                 MyDelegate del2 = new MyDelegate(WorkPerformed2);
+                MyDelegate del3 = new MyDelegate(WorkPerformed3);
 
-                DoWork(del2);
+                del1 += del2 + del3;
+                del1(8, WorkType.OrganizeMeting);
 
                 Console.Read();
             }
@@ -38,6 +39,11 @@ namespace SimpleDelegate
             static void WorkPerformed2(int hours, WorkType workType)
             {
                 Console.WriteLine("WorkPerformed2 called, hours = " + hours.ToString());
+            }
+
+            static void WorkPerformed3(int hours, WorkType workType)
+            {
+                Console.WriteLine("WorkPerformed3 called, hours = " + hours.ToString());
             }
         }
 
