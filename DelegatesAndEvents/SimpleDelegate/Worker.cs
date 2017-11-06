@@ -8,13 +8,9 @@ namespace SimpleDelegate
 {
     public class Worker
     {
-        //OneWay delegate
-        public delegate void MyDelegate(int hours, WorkType workType);
 
-        //Define an event
-        public event MyDelegate WorkPerformed;
+        public event EventHandler<WorkPerformedEventArgs> WorkPerformed;
 
-        //Define an event using the built-in .net delegate
         public event EventHandler WorkCompleted;
 
         public void Dowork(int hours,WorkType workType)
@@ -27,6 +23,7 @@ namespace SimpleDelegate
             OnWorkCompleted();
         }
 
+
         protected virtual void OnWorkPerformed(int hours, WorkType workType)
         {
 
@@ -35,10 +32,10 @@ namespace SimpleDelegate
             //    WorkPerformed(hours, workType);
             //}
 
-            var  del = WorkPerformed as MyDelegate; // cast the event as the delegate
+            var del = WorkPerformed as EventHandler<WorkPerformedEventArgs>; // cast the event as the delegate
             if(del != null) // check if there are any listeners attached
             {
-                del(hours, workType);
+                del(this,new WorkPerformedEventArgs(hours,workType));
             }
         }
 

@@ -7,44 +7,29 @@ using System.Threading.Tasks;
 namespace SimpleDelegate
 {
 
-
-
-        /*
-         * Behinf the scenes the compiler generates a class Mydelegate that inherits from MutliCastDelegates
-        */
-
         class Program
         {
             static void Main(string[] args)
             {
-                MyDelegate del1 = new MyDelegate(WorkPerformed1);
-                MyDelegate del2 = new MyDelegate(WorkPerformed2);
-                MyDelegate del3 = new MyDelegate(WorkPerformed3);
+                var worker = new Worker();
 
-                del1 += del2 + del3;
-                del1(8, WorkType.OrganizeMeting);
+                worker.WorkPerformed += worker_workPerformed;
+                worker.WorkCompleted += woker_workCompleted;
+                worker.Dowork(9,WorkType.PrintPapers);
 
                 Console.Read();
             }
 
-            static void DoWork(MyDelegate del)
+            static void woker_workCompleted(object sender, EventArgs e)
             {
-                del(10, WorkType.GenerateReports);
-            }
-            static void WorkPerformed1(int hours, WorkType workType)
-            {
-                Console.WriteLine("WorkPerformed1 called, hours = " + hours.ToString());
+                Console.WriteLine("Work completed !");
             }
 
-            static void WorkPerformed2(int hours, WorkType workType)
+            static void worker_workPerformed(object sender, WorkPerformedEventArgs e)
             {
-                Console.WriteLine("WorkPerformed2 called, hours = " + hours.ToString());
+                Console.WriteLine("Hours worked: " + e.Hours + " " + e.WorkType);
             }
 
-            static void WorkPerformed3(int hours, WorkType workType)
-            {
-                Console.WriteLine("WorkPerformed3 called, hours = " + hours.ToString());
-            }
         }
 
         public enum WorkType
