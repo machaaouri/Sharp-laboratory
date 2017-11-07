@@ -13,11 +13,21 @@ namespace SimpleDelegate
         {
             static void Main(string[] args)
             {
+                var data = new ProcessData();
                 BusinessRulesDelegate addDel = (x, y) => x + y;
                 BusinessRulesDelegate multiplyDel = (x, y) => x * y;
-
-                var data = new ProcessData();
                 data.Process(5, 3, multiplyDel);
+
+
+                Func<int, int, int> funcAddDel = (x, y) => x + y;
+                Func<int, int, int> funcMultipDel = (x, y) => x * y;
+                data.ProcessFunc(10, 20, funcMultipDel);
+
+
+
+
+                Action<int, int> myAction = (x, y) => Console.WriteLine(x + y);
+                data.ProcessAction(4, 2, myAction);
 
 
 
