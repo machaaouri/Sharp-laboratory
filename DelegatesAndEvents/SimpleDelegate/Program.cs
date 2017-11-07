@@ -6,13 +6,22 @@ using System.Threading.Tasks;
 
 namespace SimpleDelegate
 {
+        public delegate int BusinessRulesDelegate(int x, int y);
+
 
         class Program
         {
             static void Main(string[] args)
             {
-                var worker = new Worker();
+                BusinessRulesDelegate addDel = (x, y) => x + y;
+                BusinessRulesDelegate multiplyDel = (x, y) => x * y;
 
+                var data = new ProcessData();
+                data.Process(5, 3, multiplyDel);
+
+
+
+                var worker = new Worker();
                 worker.WorkPerformed += Worker_WorkPerformed;
 
                 worker.WorkStarted += (s, e) =>
