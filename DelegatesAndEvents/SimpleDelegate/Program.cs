@@ -13,6 +13,22 @@ namespace SimpleDelegate
         {
             static void Main(string[] args)
             {
+
+                var custs = new List<Customer>
+                {
+                    new Customer{City="Paris",FirstName="Machaaouri",LastName="Houssame",ID = 1},
+                    new Customer{City="Fes",FirstName="Machaaouri",LastName="Ratus",ID = 3},
+                    new Customer{City="Paris",FirstName="Machaaouri",LastName="anas",ID = 5},
+                    new Customer{City="Marrakech",FirstName="Messi",LastName="yuri",ID = 4}
+                };
+
+                var result = custs.Where(c => c.City == "Paris").OrderBy(c => c.LastName);
+
+                foreach(var c in result)
+                {
+                    Console.WriteLine(c.LastName);
+                }
+
                 var data = new ProcessData();
                 BusinessRulesDelegate addDel = (x, y) => x + y;
                 BusinessRulesDelegate multiplyDel = (x, y) => x * y;
