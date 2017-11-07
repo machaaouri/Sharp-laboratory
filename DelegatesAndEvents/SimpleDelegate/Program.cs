@@ -14,7 +14,13 @@ namespace SimpleDelegate
                 var worker = new Worker();
 
                 worker.WorkPerformed += Worker_WorkPerformed;
-                worker.WorkStarted += Worker_Workstarted;
+
+                worker.WorkStarted += (s, e) =>
+                {
+                    Console.WriteLine("Word started !");
+                    Console.WriteLine("Hours " + e.Hours + ", workType: " + e.WorkType);
+                };
+
                 worker.WorkCompleted += delegate(object sender, EventArgs e)
                 {
                     Console.WriteLine("Work completed !"); // use an Anonymous Method
@@ -24,10 +30,10 @@ namespace SimpleDelegate
                 Console.Read();
             }
 
-            private static void Worker_Workstarted(object sender, EventArgs e)
-            {
-                Console.WriteLine("Work started !");
-            }
+            //private static void Worker_Workstarted(object sender, EventArgs e)
+            //{
+            //    Console.WriteLine("Work started !");
+            //}
 
             //static void Worker_WorkCompleted(object sender, EventArgs e)
             //{
