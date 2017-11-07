@@ -11,10 +11,14 @@ namespace SimpleDelegate
 
         public event EventHandler<WorkPerformedEventArgs> WorkPerformed;
 
+        public event EventHandler WorkStarted;
+
         public event EventHandler WorkCompleted;
 
         public void Dowork(int hours,WorkType workType)
         {
+            OnWorkStarted();
+
             for (int i = 0; i < hours;i++ )
             {
                 OnWorkPerformed(i+1, workType);
@@ -23,6 +27,16 @@ namespace SimpleDelegate
             OnWorkCompleted();
         }
 
+
+        protected virtual void OnWorkStarted()
+        {
+            var del = WorkStarted as EventHandler;
+
+            if(del != null)
+            {
+                del(this, EventArgs.Empty);
+            }
+        }
 
         protected virtual void OnWorkPerformed(int hours, WorkType workType)
         {
