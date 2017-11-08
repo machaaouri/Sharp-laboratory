@@ -47,6 +47,11 @@ namespace CommunicatingBetweenControls.UserControls
         public EmployeesOnJob()
         {
             InitializeComponent();
+            Mediator.GetInstance().Jobchanged += (s, e) =>
+            {
+
+                BindData(e.Job);
+            };
         }
 
         private void BindData(Job job)
